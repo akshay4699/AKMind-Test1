@@ -85,7 +85,7 @@ clean-api-spec:
 
 gen-go: $(WIRE)
 	@echo "generate go files"
-	$(WIRE) gen -tags $(WIRE_TAGS) ./pkg/server ./pkg/cmd/grafana-cli/runner
+# 	$(WIRE) gen -tags $(WIRE_TAGS) ./pkg/server ./pkg/cmd/grafana-cli/runner
 
 build-go: $(MERGED_SPEC_TARGET) gen-go ## Build all Go binaries.
 	@echo "build go files"

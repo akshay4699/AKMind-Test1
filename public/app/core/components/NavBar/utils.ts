@@ -4,7 +4,6 @@ import { getConfig } from 'app/core/config';
 import { contextSrv } from 'app/core/services/context_srv';
 import { ShowModalReactEvent } from '../../../types/events';
 import appEvents from '../../app_events';
-import { getFooterLinks } from '../Footer/Footer';
 import { HelpModal } from '../help/HelpModal';
 
 export const SEARCH_ITEM_ID = 'search';
@@ -52,7 +51,6 @@ export const enrichConfigItems = (
 
     if (link.id === 'help') {
       link.children = [
-        ...getFooterLinks(),
         {
           text: 'Keyboard shortcuts',
           icon: 'keyboard',

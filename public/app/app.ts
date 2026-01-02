@@ -12,6 +12,7 @@ import _ from 'lodash';
 import ReactDOM from 'react-dom';
 import React from 'react';
 import config from 'app/core/config';
+import { getHelpNavPreloadedState } from './core/init/helpOverride';
 // @ts-ignore ignoring this for now, otherwise we would have to extend _ interface with move
 import {
   locationUtil,
@@ -99,9 +100,11 @@ export class GrafanaApp {
       setPanelDataErrorView(PanelDataErrorView);
       setLocationSrv(locationService);
       setTimeZoneResolver(() => config.bootData.user.timezone);
-      // Important that extension reducers are initialized before store
-      addExtensionReducers();
-      configureStore();
+  // Important that extension reducers are initialized before store
+  addExtensionReducers();
+  // Prepare a preloaded state that overrides the Help menu subtitle (frontend-only)
+  const preloadedState = getHelpNavPreloadedState();
+  configureStore(preloadedState);
       initExtensions();
 
       standardEditorsRegistry.setInit(getAllOptionEditors);
